@@ -1,6 +1,6 @@
 # unit_test
 
-A new Flutter project.
+A new Flutter project for experimenting with the Dart and Flutter tools for testing.
 
 ## Getting Started
 
