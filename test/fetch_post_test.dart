@@ -1,4 +1,21 @@
 import 'package:flutter_test/flutter_test.dart';
+// TypeMatcher in the matcher package clashes with the
+// TypeMatcher in framework.dart. If you want to use TypeMatcher in expect()
+// use the TypeMatcher from the matcher package
+// Alternatively, you can use 'isA<T>()'
+
+// When using the 'flutter_test' package, don't directly instantiate a
+// TypeMatcher object.
+// Instead, use 'isA<T>()' when you need a TypeMatcher object. 'isA<T>()'
+// returns an instantiated TypeMatcher.
+// 'widget_tester.dart' (the file in the 'flutter_test' package that houses
+// the particular test functions we need) doesn't export the TypeMatcher class.
+// It however gives us 'isA<T>()' which returns a TypeMatcher object of type T
+// that we can use.
+// Another TypeMatcher is defined in 'framework.dart'. If TypeMatcher were
+// exported from 'widget_tester.dart', there would be a namespace clash
+// between 'framework.dart' and 'widget_tester.dart' should you attempt to
+// instantiate a TypeMatcher
 import 'package:matcher/matcher.dart' as type_matcher;
 
 import 'package:mockito/mockito.dart';
@@ -34,7 +51,6 @@ main() {
     });
   });
 }
-
 
 //void main() {
 //  group('fetchPost', () {
